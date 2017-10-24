@@ -17,7 +17,7 @@ def upload(request):
         if form.is_valid():
             new_file = form.save()
             extract_vms(new_file)
-            return HttpResponse('file uploaded')
+            return HttpResponse('WIP: Redirect to assessment workflow page.')
     else:
         form = FileUpload()
     return render(request, 'upload.html', {
