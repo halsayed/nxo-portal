@@ -6,7 +6,9 @@ from .upload import FileUpload
 from .transform import extract_vms
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the portal index.")
+
+    return render(request, 'index.html')
+    #return HttpResponse("Hello, world. You're at the portal index.")
 
 
 def upload(request):
