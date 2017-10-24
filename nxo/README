@@ -1,14 +1,29 @@
-Build the docker container
 --------------------------
-
+Build the Docker container
+--------------------------
 docker build -t nxo-portal .
 
-
-Run the project
----------------
-
+------------------------
+Run the Docker container
+------------------------
 Windows:
 docker run -it -v  C:\[**checkout path**]\nxo-portal\nxo:/app -p 8000:8000 nxo-portal ash
 
 MacOS:
 docker run -it -v  $(pwd):/app -p 8000:8000 nxo-portal ash
+
+---------------
+Run the Project
+---------------
+python manage.py runserver 0.0.0.0:8000
+
+-------------------------------------------------------------
+Run Migrations (Apply schema/model changes to local database)
+-------------------------------------------------------------
+python manage.py migrate
+
+--------------------------------------------------
+Create Migrations (Create migration delta scripts)
+--------------------------------------------------
+python manage.py makemigrations
+
