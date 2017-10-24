@@ -1,5 +1,25 @@
-@media screen and (min-width: 768px){
+@media screen and (min-width: 768px) {
 
-.jumbotron {
-    background-image: url(/static/images/lp-background-array.jpg);
+    .jumbotron {
+        background: linear-gradient(rgba(64, 64, 64, .75), rgba(64, 64, 64, .75)), url(/static/images/lp-background-array.jpg);
+        background-position-x: center;
+        background-position-y: -386px;
+    }
+
+}
+
+.jumbotron h1 {
+    font-size: 45px;
+    font-weight: 500;
+    color: whitesmoke;
+}
+.jumbotron h2 {
+    font-size: 26px;
+    color: #AFD135;
+}
+
+.navbar {
+
+    margin-bottom: 0px;
+
 }
