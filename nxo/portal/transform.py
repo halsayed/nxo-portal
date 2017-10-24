@@ -17,8 +17,9 @@ def extract_vms(file):
         vm.ram = raw_vm['ram']
 
         for vdisk in raw_vm['vdisks']:
-            vm.no_disks += 1
-            vm.capacity += vdisk['capacity']
+            if 'capacity' in vdisk:
+                vm.no_disks += 1
+                vm.capacity += vdisk['capacity']
 
         vm.save()
 
