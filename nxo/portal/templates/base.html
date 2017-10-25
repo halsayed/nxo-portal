@@ -11,7 +11,7 @@
     <title>NXO</title>
 
     <!-- Bootstrap -->
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
     <link href="/static/css/bootstrap-overrides.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -24,7 +24,9 @@
     <link rel="stylesheet" href="{% static 'django_tables2/themes/paleblue/css/screen.css' %}" />
   </head>
   <body>
-<div class="navbar navbar-inverse" role="navigation">
+
+
+    <div class="navbar navbar-inverse navbar" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -33,23 +35,31 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Xtract Origins</a>
+          <a class="navbar-brand" href="/"><img src="/static/images/logo-n.png" class="logo" style="margin-right:20px" />Xtract Origins</a>
         </div>
         <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAWVJREFUOBGVVL2Kg0AQHuXAxDKdcAeprI1NXiCN4HOc4EvEvISQa6xSW+bAJwg26hMEEkQstDU23s7qrnp4FzOw7vx88+3uzKBwOByMpmmOZH3ADBEE4UZgn47jfCNcfCUZE7qDvlBHQYJZJ7fw9jvMEYeBZ7osy6Cq6gj2EsF6vYbdbjdNsFgseECSJCDF4vYwxp2d8oa7aZqg6zqcTicoigJs24Y0TcHzvFHsdzLaLz1hikDY7/cNBvCaVVVRDD7h8XhM4bmPPPFODIvfgCUj4lkyYkgr38l2pDVAx39Cpm4UjuMYfN+nJLMIzuczJVAUBTRNowVmjGI328ye3C+XC+DCOtV1DVEUcRwSWHNIVqsVncIkSUY16qeFc7YK6w5zG4YB2+0WXNeFPM+Ze94c4NU3mw1cr9dRMrL8WUTsc9cqWC6XEAQB3G74K+gFMXwOejfXsDZ3tMqyhDAMIcsyHuxi1g985oWXD2O18QAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: pointer;">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAWVJREFUOBGVVL2Kg0AQHuXAxDKdcAeprI1NXiCN4HOc4EvEvISQa6xSW+bAJwg26hMEEkQstDU23s7qrnp4FzOw7vx88+3uzKBwOByMpmmOZH3ADBEE4UZgn47jfCNcfCUZE7qDvlBHQYJZJ7fw9jvMEYeBZ7osy6Cq6gj2EsF6vYbdbjdNsFgseECSJCDF4vYwxp2d8oa7aZqg6zqcTicoigJs24Y0TcHzvFHsdzLaLz1hikDY7/cNBvCaVVVRDD7h8XhM4bmPPPFODIvfgCUj4lkyYkgr38l2pDVAx39Cpm4UjuMYfN+nJLMIzuczJVAUBTRNowVmjGI328ye3C+XC+DCOtV1DVEUcRwSWHNIVqsVncIkSUY16qeFc7YK6w5zG4YB2+0WXNeFPM+Ze94c4NU3mw1cr9dRMrL8WUTsc9cqWC6XEAQB3G74K+gFMXwOejfXsDZ3tMqyhDAMIcsyHuxi1g985oWXD2O18QAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
+         <ul class="nav navbar-nav navbar-right">
+<li><a href="/download"><span class="glyphicon glyphicon-cloud-download"></span> Download Collector</a></li>
+            <li><a href="/upload"><span class="glyphicon glyphicon-plus"></span> New Collection</a></li>
+<li><form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form></li>
+           <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user pad"></span> jdubois@nutanix.com <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Log Out</a></li>
+
+
+                  </ul>
+                </li>
+          </ul>
+
         </div><!--/.navbar-collapse -->
       </div>
     </div>
-
-
 
 
             {% block content %}
