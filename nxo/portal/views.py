@@ -13,14 +13,15 @@ from .models import File, Vm
 from .tables import VmTable
 
 def index(request):
-
     return render(request, 'index.html')
     #return HttpResponse("Hello, world. You're at the portal index.")
 
 def download(request):
-
     return render(request, 'download.html')
 
+def list(request):
+    files = File.objects.all()
+    return render(request, 'list.html')
 
 def upload(request):
     if request.method == 'POST':
@@ -53,12 +54,11 @@ def analyze(request, filename=None):
 
 def postToSizer(request, filename=None):
     file = File.objects.filter(name=filename)[0]
-    vms = Vm.objects.filter(file=file)
     with open('payload.json') as payload_file:
         payload = json.load(payload_file)
-        payload['data']['HDD'] = '%.2f' % (file.computed_capacity/1024/1024/1024/1024)
+        payload['data']['HDD'] = '%.2f' % (((file.computed_capacity/1024/1024/1024/1024)/10)*9)
         payload['data']['RAM'] = '%.2f' % (file.computed_ram/1024/1024/1024)
-        payload['data']['SSD'] = '%.2f' % (file.computed_capacity/1024/1024/1024/1024)
+        payload['data']['SSD'] = '%.2f' % ((file.computed_capacity/1024/1024/1024/1024)/10)
         payload['data']['cpu'] = '%.2f' % ((file.computed_vcpu/6)*2.8)
         payload['data']['vCPUs'] = str(file.computed_vcpu)
         payload['data']['workloadName'] = file.name
