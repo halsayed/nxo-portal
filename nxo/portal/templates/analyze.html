@@ -1,13 +1,31 @@
 {% extends 'base.html' %}
 {% load render_table from django_tables2 %}
 {% block content %}
-
+{% load humanize %}
 
 <div class="container">
     <div class="page-header">
-        <h1>{{ file.name }}</h1>
+        <h1>Origins Assessment: <small>{{ file.name }}</small></h1>
     </div>
-    <table class="table">
+
+    <div class="panel panel-primary">
+    <div class="panel-heading">
+        Calculated Workload:
+    </div>
+        <div class="panel-body">
+
+        <div class="row text-center">
+            <div class="col-md-2"><span class="tableIcon"><img src="/static/images/VM_icon.png" width="64px" height="64px" /></span> {{ vms.count  }} VMs</div>
+            <div class="col-md-2"><span class="tableIcon"><img src="/static/images/CPU_icon.png" width="64px" height="64px" /></span> {{ file.computed_vcpu|floatformat:"0"|intcomma  }} vCPUs</div>
+            <div class="col-md-2"><span class="tableIcon"><img src="/static/images/RAM_icon.png" width="64px" height="64px" /></span> {{ ram_total_gb|floatformat:"1"|intcomma  }} GB RAM</div>
+            <div class="col-md-2"><span class="tableIcon"><img src="/static/images/storage_icon.png" width="64px" height="64px" /></span> {{ capacity_total_gb|floatformat:"1"|intcomma  }} GB Disk</div>
+            <div class="col-md-4">
+                <button class="btn btn-primary" style="margin-top:auto;margin-bottom:auto">Recalculate</button>
+            </div>
+        </div>
+</div>
+    </div>
+
         <tr>
             <td>{{ vms.count }}</td>
             <td># of VMs</td>
@@ -21,7 +39,8 @@
             <td>{{ capacity_total_gb }}</td>
             <td>GB of Storage</td>
         </tr>
-    </table>
+    </table>    <table class="table">
+
     <div class="container-fluid">
         {% render_table table %}
     </div>

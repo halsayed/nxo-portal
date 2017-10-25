@@ -47,8 +47,8 @@ def analyze(request, filename=None):
             'table': table,
             'file': file,
             'vms': vms,
-            'ram_total_gb': file.computed_ram/1024/1024/1024,
-            'capacity_total_gb': file.computed_capacity/1024/1024/1024,
+            'ram_total_gb': file.computed_ram,
+            'capacity_total_gb': file.computed_capacity/1024,
         })
 
 def postToSizer(request, filename=None):
