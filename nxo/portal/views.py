@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django_tables2 import RequestConfig
 
 import os
+import json
 
 # Create your views here.
 #from django.http import HttpResponse
@@ -51,5 +52,17 @@ def analyze(request, filename=None):
         })
 
 def postToSizer(request, filename=None):
+    file = File.objects.filter(name=filename)[0]
+    vms = Vm.objects.filter(file=file)
+    with open('payload.json') as payload_file:
+        payload = json.load(payload_file)
+        payload['data']['HDD'] = '%.2f' % (file.computed_capacity/1024/1024/1024/1024)
+        payload['data']['RAM'] = '%.2f' % (file.computed_ram/1024/1024/1024)
+        payload['data']['SSD'] = '%.2f' % (file.computed_capacity/1024/1024/1024/1024)
+        payload['data']['cpu'] = '%.2f' % ((file.computed_vcpu/6)*2.8)
+        payload['data']['vCPUs'] = str(file.computed_vcpu)
+        payload['data']['workloadName'] = file.name
+    with open('payload.json', 'w') as payload_file:
+        json.dump(payload, payload_file, ensure_ascii=False)
     os.system("/data/pushToSizer.sh")
     return redirect("https://services.nutanix.com/#/scenario/MjE1NzMx")
