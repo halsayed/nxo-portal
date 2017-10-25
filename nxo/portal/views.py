@@ -14,6 +14,10 @@ def index(request):
     return render(request, 'index.html')
     #return HttpResponse("Hello, world. You're at the portal index.")
 
+def download(request):
+
+    return render(request, 'download.html')
+
 
 def upload(request):
     if request.method == 'POST':
