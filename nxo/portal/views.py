@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 
 from django_tables2 import RequestConfig
 
+import os
+
 # Create your views here.
 #from django.http import HttpResponse
 from .upload import FileUpload
@@ -29,21 +31,21 @@ def upload(request):
     })
 
 def analyze(request, filename=None):
-    import pprint
-    pp = pprint.PrettyPrinter(indent=4)
     file = File.objects.filter(name=filename)[0]
     vms = Vm.objects.filter(file=file)
     if file == None:
         print("No file found")
     else:
-        pp.pprint(vms)
+        table = VmTable(vms)
+        RequestConfig(request).configure(table)
+        return render(request, 'analyze.html', {
+            'table': table,
+            'file': file,
+            'vms': vms,
+            'ram_total_gb': file.computed_ram/1024/1024/1024,
+            'capacity_total_gb': file.computed_capacity/1024/1024/1024,
+        })
 
-    table = VmTable(vms)
-    RequestConfig(request).configure(table)
-    return render(request, 'analyze.html', {
-        'table': table,
-        'file': file,
-        'vms': vms,
-        'ram_total_gb': file.computed_ram/1024/1024/1024,
-        'capacity_total_gb': file.computed_capacity/1024/1024/1024,
-    })
+def postToSizer(request, filename=None):
+    os.system("/data/pushToSizer.sh")
+    return redirect("https://services.nutanix.com/#/scenario/MjE1NzMx")
