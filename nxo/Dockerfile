@@ -7,6 +7,7 @@ RUN apk add --no-cache \
 			build-base \
 			python3-dev \
 			mariadb-dev \
+			curl \
 			&& ln -s /usr/bin/python3 /usr/local/bin/python \
 			&& ln -s /usr/bin/pip3 /usr/local/bin/pip \
 			&& rm -rf /var/cache/apk/*

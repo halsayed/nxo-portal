@@ -17,7 +17,7 @@
         <div class="row text-center">
             <div class="col-md-2"><span class="tableIcon"><img src="/static/images/VM_icon.png" width="64px" height="64px" /></span> {{ vms.count  }} VMs</div>
             <div class="col-md-2"><span class="tableIcon"><img src="/static/images/CPU_icon.png" width="64px" height="64px" /></span> {{ file.computed_vcpu|floatformat:"0"|intcomma  }} vCPUs</div>
-            <div class="col-md-2"><span class="tableIcon"><img src="/static/images/RAM_icon.png" width="64px" height="64px" /></span> {{ ram_total_gb|floatformat:"0|intcomma  }} GB RAM</div>
+            <div class="col-md-2"><span class="tableIcon"><img src="/static/images/RAM_icon.png" width="64px" height="64px" /></span> {{ ram_total_gb|floatformat:"0"|intcomma  }} GB RAM</div>
             <div class="col-md-3"><span class="tableIcon"><img src="/static/images/storage_icon.png" width="64px" height="64px" /></span> {{ capacity_total_gb|floatformat:"1"|intcomma  }} GB Disk</div>
             <div class="col-md-3 vcenter">
                 <button class="btn btn-primary" style="margin-top:auto;margin-bottom:auto">Recalculate</button>
